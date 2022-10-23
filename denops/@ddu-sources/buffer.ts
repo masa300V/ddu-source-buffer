@@ -53,7 +53,7 @@ export class Source extends BaseSource<Params> {
       const modmarker_ = isModified_ ? "+" : " ";
 
       return {
-        word: `${bufinfo.bufnr} ${curmarker_}${altmarker_} ${modmarker_} ${curnr_} ${altnr_} ${bufinfo.listed} ${
+        word: `${bufinfo.bufnr} ${curmarker_}${altmarker_} ${modmarker_} ${
           relative(currentDir, bufinfo.name)
         }`,
         action: {
@@ -76,7 +76,9 @@ export class Source extends BaseSource<Params> {
         'ddu#source#buffer#getbufinfo'
       ) as GetBufInfoReturn;
 
-      return buffers.filter((b) => b.listed).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
+      return buffers.filter((b) => b.listed).sort((a, b) => {
+        return a.bufnr == currentBufNr ? -1 : b.lastused - a.lastused;
+      }).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
     };
 
     return new ReadableStream({
