@@ -76,7 +76,7 @@ export class Source extends BaseSource<Params> {
         'ddu#source#buffer#getbufinfo'
       ) as GetBufInfoReturn;
 
-      return buffers.map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
+      return buffers.filter((b) => b.listed).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
     };
 
     return new ReadableStream({
