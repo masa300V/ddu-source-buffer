@@ -48,8 +48,8 @@ export class Source extends BaseSource<Params> {
       const isAlternate_ = altnr_ === bufinfo.bufnr;
       const isModified_ = bufinfo.changed;
 
-      const curmarker_ = isCurrent_ ? "!" : " ";
-      const altmarker_ = isAlternate_ ? "%" : " ";
+      const curmarker_ = isCurrent_ ? "%" : " ";
+      const altmarker_ = isAlternate_ ? "#" : " ";
       const modmarker_ = isModified_ ? "+" : " ";
 
       return {
@@ -77,7 +77,7 @@ export class Source extends BaseSource<Params> {
       ) as GetBufInfoReturn;
 
       return buffers.filter((b) => b.listed).sort((a, b) => {
-        return a.bufnr == alternateBufNr ? -1 : b.lastused - a.lastused;
+        return a.bufnr == currentBufNr ? -1 : a.lastused - b.lastused;
       }).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
     };
 
