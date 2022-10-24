@@ -77,7 +77,7 @@ export class Source extends BaseSource<Params> {
       ) as GetBufInfoReturn;
 
       return buffers.filter((b) => b.listed).sort((a, b) => {
-        return a.bufnr == currentBufNr ? -1 : a.lastused - b.lastused;
+        return a.bufnr == currentBufNr ? 1 : b.lastused - a.lastused;
       }).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
     };
 
