@@ -76,8 +76,13 @@ export class Source extends BaseSource<Params> {
         'ddu#source#buffer#getbufinfo'
       ) as GetBufInfoReturn;
 
+    buffers.forEach(function(b){
+      if (b.bufnr == currentBufNr){
+        b.lastused = 0;
+      };
+    });
       return buffers.filter((b) => b.listed).sort((a, b) => {
-        return a.bufnr == currentBufNr ? 1 : b.lastused - a.lastused;
+        return b.lastused - a.lastused;
       }).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
     };
 
