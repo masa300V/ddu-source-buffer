@@ -1,5 +1,5 @@
-function! ddu#source#buffer#getbufinfo() abort
-  return {
+function! ddu#source#buffer#getsnapshot() abort
+  let s:bufss = {
   \  'currentDir': getcwd(),
   \  'currentBufNr': bufnr('%'),
   \  'alternateBufNr': bufnr('#'),
@@ -11,4 +11,8 @@ function! ddu#source#buffer#getbufinfo() abort
   \    'name': buf['name'],
   \  }}),
   \}
+endfunction
+
+function! ddu#source#buffer#getbufinfo() abort
+  return s:buffss
 endfunction
