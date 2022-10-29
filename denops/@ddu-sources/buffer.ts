@@ -58,7 +58,7 @@ export class Source extends BaseSource<Params> {
       return {
         word: `${bn__} ${mk__} ${modmarker_} ${
           relative(currentDir, bufinfo.name)
-        } ${curnr_} ${altnr_} ${bufinfo.lastused}`,
+        }`,
         action: {
           bufNr: bufinfo.bufnr,
           path: bufinfo.name,
