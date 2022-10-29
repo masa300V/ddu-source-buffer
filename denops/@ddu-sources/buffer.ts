@@ -50,10 +50,13 @@ export class Source extends BaseSource<Params> {
 
       const curmarker_ = isCurrent_ ? "%" : "";
       const altmarker_ = isAlternate_ ? "#" : "";
-      const modmarker_ = isModified_ ? "+" : "";
+      const modmarker_ = isModified_ ? "+" : " ";
+      
+      const bn__ = ('    ' + ${bufinfo.bufnr}).slice(-4)
+      const mk__ = ('  ' + ${curmarker_}${altmarker_}).slice(-2)
 
       return {
-        word: `('    ' + ${bufinfo.bufnr}).slice(-4) ('  ' + ${curmarker_}${altmarker_}).slice(-2)(' ' + ${modmarker_}).slice(-1) ${
+        word: `${bn__} ${mk__} ${modmarker_} ${
           relative(currentDir, bufinfo.name)
         } ${curnr_} ${altnr_} ${bufinfo.lastused}`,
         action: {
