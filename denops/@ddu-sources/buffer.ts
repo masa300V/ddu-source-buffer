@@ -52,8 +52,8 @@ export class Source extends BaseSource<Params> {
       const altmarker_ = isAlternate_ ? "#" : "";
       const modmarker_ = isModified_ ? "+" : " ";
       
-      const bn__ = ('    ' + ${bufinfo.bufnr}).slice(-4)
-      const mk__ = ('  ' + ${curmarker_}${altmarker_}).slice(-2)
+      const bn__ = (`    ${bufinfo.bufnr}`).slice(-4)
+      const mk__ = (`  ${curmarker_}${altmarker_}`).slice(-2)
 
       return {
         word: `${bn__} ${mk__} ${modmarker_} ${
