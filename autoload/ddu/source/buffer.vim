@@ -4,7 +4,7 @@ function! ddu#source#buffer#getsnapshot() abort
   \  'currentBufNr': bufnr('%'),
   \  'alternateBufNr': bufnr('#'),
   \  'buffers': map(getbufinfo(), {_, buf -> {
-  \    'bufnr': buf['bufnr'],
+  \    'bufnr': printf("%4s",buf['bufnr']),
   \    'changed': buf['changed'],
   \    'lastused': buf['lastused'],
   \    'listed': buf['listed'],
