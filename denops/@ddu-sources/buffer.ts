@@ -85,7 +85,7 @@ export class Source extends BaseSource<Params> {
       };
     });
       return buffers.filter((b) => b.listed).sort((a, b) => {
-        return b.lastused - a.lastused;
+        return Number(BigInt(b.lastused) - BigInt(a.lastused));
       }).map((b) => get_actioninfo(b, currentBufNr, alternateBufNr, currentDir));
     };
 
